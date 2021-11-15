@@ -1,0 +1,290 @@
+package main
+
+import(
+	"fmt"
+	"math"
+)
+
+func add(x int, y int) (int) {
+	return x + y;
+}
+
+func sub(x int, y int) (int) {
+	return x - y;
+}
+
+func mul(x int, y int) (int) {
+	return x * y;
+}
+
+func div(x int, y int) (int) {
+	return x / y;
+}
+
+func split(sum int) (int) {
+	x := sum * 4 / 9;
+	return x;
+}
+
+func OddOrEven()(){
+	i := 16;
+
+	if (i%2==0) {
+		fmt.Println("Even");
+	} else {
+		fmt.Println("Odd");
+	}
+
+}
+
+func PositiveOrNegative()(){
+	numb := 12;
+
+	if numb>=0 {
+		fmt.Println("Positive");
+	}
+	if numb<0 {
+		fmt.Println("Negative");
+
+	}
+}
+
+func sqrt(x float64) (string) {
+	if x < 0 {
+		return sqrt(-x) ;
+	}
+	a := math.Sqrt(x);
+	return fmt.Sprint(a);
+}
+
+func pow(x, n, lim float64) (float64) {
+	v := math.Pow(x, n);
+	if v < lim {
+		lim = v;
+	}
+	return lim;
+}
+
+func simplefor()() {
+	var i int;
+	for i = 1; i <= 5; {
+		fmt.Print(i);
+		i+=1;
+	}
+}
+
+func rectangle(l int, b int) (int) {
+	var parameter int;
+	parameter = 2 * (l + b);
+	fmt.Print("Parameter: ", parameter);
+	fmt.Print(";");
+	area := l * b;
+	return area;
+}
+
+func isLeapYear(year int) (bool) {
+	leapFlag := false;
+	if year%4 == 0 {
+		if year%100 == 0 {
+			if year%400 == 0 {
+				leapFlag = true;
+			} else {
+				leapFlag = false;
+			}
+		} else {
+			leapFlag = true;
+		}
+	} else {
+		leapFlag = false;
+	}
+	return leapFlag;
+}
+
+
+func Armstrong()(){
+
+	rightMost:=0;
+	num := 0;
+	cubicSum  := 0;
+	tempNum  := 0;
+	//fmt.Print("Enter a 3 digits number : ");
+	num=153;
+	//fmt.Scanf("%d", &num);
+	tempNum = num;
+	// get the right most digit
+	for ; tempNum == 0;{
+		rightMost = tempNum % 10;
+		cubicSum += rightMost * rightMost * rightMost;
+
+		// update the input digit minus the processed rightMost
+		tempNum /= 10;
+	}
+
+	if num == cubicSum {
+		fmt.Println(num, "is an Armstrong number!");
+	} else {
+		fmt.Println(num, "is NOT an Armstrong number!");
+	}
+
+}
+
+func GreatestCommonDivisor(a, b int) (int) {
+	for ;b != 0; {
+		t := b;
+		b = a % b;
+		a = t;
+	}
+	return a;
+}
+
+func PascalsTriangle()(){
+	rows := 5;
+	temp := 1;
+
+	for i := 0; i < rows; i+=1 {
+
+		for j := 1; j <= rows-i ; j+=1 {
+			fmt.Print(" ") ;
+		}
+
+		for k := 0; k <= i; k+=1 {
+
+			if (k==0 || i==0) {
+				temp = 1;
+			}else{
+				temp = temp*(i-k+1)/k;
+			}
+
+			fmt.Printf(" %d",temp);
+		}
+		fmt.Println("");
+
+	}
+
+}
+
+
+func FloydsTriangle(){
+	rows:= 5;
+	temp  := 1;
+
+	for i := 1; i <= rows; i+=1 {
+
+		for k := 1; k <= i; k+=1 {
+
+			fmt.Printf(" %d",temp);
+			temp+=1;
+		}
+		fmt.Println("");
+	}
+}
+func IsDigitPolyndrome() {
+	var number,remainder,temp int;
+	reverse:=  0;
+	number=3663;
+	temp=number;
+
+	for;number==0;{
+		remainder = number%10;
+		reverse = reverse*10 + remainder;
+		number /= 10;
+
+	}
+
+	if(temp==reverse){
+		fmt.Printf("%d is a Palindrome",temp);
+	}else{
+		fmt.Printf("%d is not a Palindrome",temp);
+	}
+
+}
+
+func ConvertBinHexToDecimal() {
+	const i = 0;
+	const j = 0;
+	var number = 000;
+	var len = 7;
+	const a = 0;
+	var base = 8;
+	var resInt,temp,intNum int
+	if base == 2 {
+             	for a:=0;a<3;a+=1 {
+			for i:=0;i<=len-1;i+=1 {
+				if (number == '1') {
+				        temp = 1;
+					for j:=0;j<=len-1-i;j+=1 {
+						temp = temp * base;
+					}
+					resInt = resInt + temp;
+				}
+			
+			}
+  	     	} 
+	} else if base == 8 {
+			for i:=0;i<=len-1;i+=1 {
+			        intNum = 0;
+				switch number {
+					case 000: 
+						intNum = 0;
+					case 001:
+						intNum = 1;
+					case 010:
+						intNum = 2;
+					case 011:
+						intNum = 3;
+					case 100:
+						intNum = 4;
+					case 101: 
+						intNum = 5;
+					case 110:
+						intNum = 6;
+					case 111:  
+						intNum = 7;
+
+				}
+				temp = 1;
+				for j:=0;j<=len-i;j+=1 {
+					temp = temp * base;
+				}
+				resInt = resInt + temp * intNum;
+			}
+		}
+	fmt.Println(" ");
+	fmt.Println("Our num is:",intNum);
+	fmt.Println("Our res is:",resInt);
+}
+
+
+func main() {
+	sum := add(42, 13);
+	fmt.Println(sum);
+	vsub := sub(42, 13);
+	fmt.Println(vsub);
+	vmul := mul(39, 13);
+	fmt.Println(vmul);
+	vplit :=div(39, 13);
+	fmt.Println(vplit);
+	spl:= split(17);
+	fmt.Println(spl);
+	OddOrEven();
+
+	PositiveOrNegative();
+	sqr := sqrt(-4);
+	sqr2:=sqrt(2);
+	fmt.Println(sqr2, sqr);
+	pow2 := pow(3, 3, 20);
+	pow1 := pow(3, 2, 10);
+	fmt.Println(pow1,pow2);
+	simplefor();
+
+	rect := rectangle(20, 30);
+	fmt.Println(" Area: ", rect);
+
+	boolev := isLeapYear(1981) ;
+	fmt.Println("Are 1981's is a leap year?:", boolev) ;
+	Armstrong();
+	PascalsTriangle();
+	FloydsTriangle();
+	IsDigitPolyndrome();
+	ConvertBinHexToDecimal();
+}
