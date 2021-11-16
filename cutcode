@@ -1,63 +1,79 @@
 package main
 
-import (
+import(
 	"fmt"
 )
 func ConvertBinHexToDecimal() {
-	const i = 0;
-	const j = 0;
-	var number = 000;
-	var len = 7;
-	const a = 0;
-	var base = 8;
-	var resInt,temp,intNum int
+
+	number := 0;
+	len := 7;
+	base := 8;
+	resInt := 0;
+	temp := 0;
+	intNum := 0;
 	if base == 2 {
-             	for a:=0;a<3;a+=1 {
+		for a:=0;a<3;a+=1 {
 			for i:=0;i<=len-1;i+=1 {
 				if (number == '1') {
-				        temp = 1;
+					temp = 1;
 					for j:=0;j<=len-1-i;j+=1 {
 						temp = temp * base;
 					}
 					resInt = resInt + temp;
 				}
-			
-			}
-  	     	} 
-	} else if base == 8 {
-			for i:=0;i<=len-1;i+=1 {
-			        intNum = 0;
-				switch number {
-					case 000: 
-						intNum = 0;
-					case 001:
-						intNum = 1;
-					case 010:
-						intNum = 2;
-					case 011:
-						intNum = 3;
-					case 100:
-						intNum = 4;
-					case 101: 
-						intNum = 5;
-					case 110:
-						intNum = 6;
-					case 111:  
-						intNum = 7;
 
-				}
-				temp = 1;
-				for j:=0;j<=len-i;j+=1 {
-					temp = temp * base;
-				}
-				resInt = resInt + temp * intNum;
 			}
 		}
-	
+	} else if base == 8 {
+		for i:=0;i<=len-1;i+=1 {
+			intNum = 0;
+			switch number {
+			case 000:
+				{
+					intNum = 0;
+				}
+			case 001:
+				{
+					intNum = 1;
+				}
+			case 010:
+				{
+					intNum = 2;
+				}
+			case 011:
+				{
+					intNum = 3;
+				}
+			case 100:
+				{
+					intNum = 4;
+				}
+			case 101:
+				{
+					intNum = 5;
+				}
+			case 110:
+				{
+					intNum = 6;
+				}
+			case 111:
+				{
+					intNum = 7;
+				}
+
+			}
+			temp = 1;
+			for j:=0;j<=len-i;j+=1 {
+				temp = temp * base;
+			}
+			resInt = resInt + temp * intNum;
+		}
+	}
+
 	fmt.Println("Our num is:",intNum);
 	fmt.Println("Our res is:",resInt);
 }
 
 func main() {
-        ConvertBinHexToDecimal();
+	ConvertBinHexToDecimal();
 }
